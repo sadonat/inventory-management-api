@@ -24,7 +24,9 @@ class Router
 
     public static function run()
     {
-        $controller = self::$routes[$_SERVER['REQUEST_URI']][$_SERVER['REQUEST_METHOD']] ?? null;
+        $path = parse_url($_SERVER['REQUEST_URI'])['path'];
+        $method =  $_SERVER['REQUEST_METHOD'];
+        $controller = self::$routes[$path][$method] ?? null;
         if (empty($controller)) {
             $controller = self::$default;
         }
