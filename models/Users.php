@@ -33,4 +33,9 @@ class Users
 
         return $stmt->rowCount();
     }
+
+    public static function update($id, $name, $password){
+      $stmt = Databaser::runQuery('UPDATE users SET name = ?, password = ? WHERE id = ?', [$name, $password, $id]);
+      return $stmt->rowCount();
+    }
 }

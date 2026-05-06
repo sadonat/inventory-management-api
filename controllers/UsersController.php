@@ -16,8 +16,8 @@ class UsersController
 
     public static function getUser()
     {
-        $input = Inputter::getInput();
-        $stmt = Users::getUser($input->id, null);
+        $id = Inputter::requiredBodyData('id');
+        $stmt = Users::getUser($id, null);
         if (empty($stmt)) {
             Responser::bad();
         }
@@ -26,9 +26,12 @@ class UsersController
 
     public static function create()
     {
-        $role = AuthControllers::auth();
-        $input = Inputter::getInput();
-        $stmt = Users::create($input->name, password_hash($input->password, PASSWORD_DEFAULT), $input->role ?? 'staff');
+        $role = AuthController::auth();
+        $name = Inputter::requiredBodyData('name');
+        $password = Inputter::requiredBodyData('password');
+        $role = Inputter::getBodyData('role');
+
+        $stmt = Users::create($name, password_hash($password, PASSWORD_DEFAULT), $role ?? 'staff');
         if ($stmt > 0) {
             Responser::ok(['message' => 'user successfully created', 'role' => $role]);
         }
@@ -37,11 +40,23 @@ class UsersController
 
     public static function delete()
     {
-        $input = Inputter::getInput();
-        $stmt = Users::delete($input->id);
+        $id = Inputter::requiredBodyData('id');
+        $stmt = Users::delete($id);
         if ($stmt > 0) {
             Responser::ok(['message' => 'user successfully deleted']);
         }
         Responser::bad(['message' => 'user not found']);
+    }
+
+    public static function update(){
+      $id = Inputter::requiredBodyData('id');
+      $name = Inputter::requiredBodyData('name');
+      $password = Inputter::requiredBodyData('password');
+
+      $stmt = Users::update($id, $name, password_hash($password, PASSWORD_DEFAULT));
+
+      if($stmt > 0)Responser::ok(['message'=> 'user successfully updated']);
+
+      Responser::bad();
     }
 }

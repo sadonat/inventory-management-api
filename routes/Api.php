@@ -15,5 +15,6 @@ Router::add('/user', 'GET', [UsersController::class, 'users']);
 Router::add('/user', 'PUT', [UsersController::class, 'create']);
 Router::add('/user', 'DELETE', [UsersController::class, 'delete']);
 Router::add('/user', 'POST', [UsersController::class, 'getUser']);
+Router::add('/user', 'UPDATE', [UsersController::class, 'update']);
 Router::add('/auth', 'POST', [UsersController::class, 'auth']);
 Router::run();

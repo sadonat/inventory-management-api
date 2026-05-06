@@ -9,12 +9,8 @@ class AuthController
 {
     public static function login()
     {
-        $input = Inputter::getInput();
-        $name = $input->name ?? null;
-        $password = $input->password ?? null;
-        if ((empty($name) or empty($password))) {
-            Responser::bad();
-        }
+        $name = Inputter::requiredBodyData('name');
+        $password = Inputter::requiredBodyData('password');
 
         $user = Users::getUser(null, $name);
 
@@ -40,12 +36,12 @@ class AuthController
     {
         $token = Auther::getBearerToken();
         if (empty($token)) {
-            Responser::bad(['message' => 'unaothorized']);
+            Responser::bad(['message' => 'unauthorized']);
         }
         $existingToken = Tokens::getUser($token);
         if ($existingToken) {
             return $existingToken;
         }
-        Responser::bad(['message' => 'unaothorized']);
+        Responser::bad(['message' => 'unauthorized']);
     }
 }
