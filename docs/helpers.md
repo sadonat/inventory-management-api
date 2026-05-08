@@ -15,7 +15,8 @@ Karena aku membuat API ini tanpa framework ataupun library, aku harus membuat fu
 - `custom($code, $status, $data)`: mengirimkan response ke client yang bisa kamu tweak sendiri. `$code` untuk kode status, `$status` untuk pesan status( ok, bad, error dan lain-lain), `$data` untuk data
 
 ## Inputter
-- `getInput()`: mengambil data di request body dan mengembalikannya sebagai objek
+- `getBodyData($itemName)`: mengambil data di request body sesuai nama `itemName`, dan mengembalikan nilainya
+- `requiredBodyData($itemName)`: sama dengan getBodyData tapi jika `$itemName` tidak ada di request body, akan mengirmkan response error ke client
 
 ## Router
 - `addDefault($controller)`: menjalankan controller yang dipilih setiap kali client meminta url yang tidak terdefinisi
