@@ -20,5 +20,5 @@ Karena aku membuat API ini tanpa framework ataupun library, aku harus membuat fu
 
 ## Router
 - `addDefault($controller)`: menjalankan controller yang dipilih setiap kali client meminta url yang tidak terdefinisi
-- `add($path, $method, $controller)`: membuat rute baru, `$path` untuk url, `$method` untuk metode request, dan $controller untuk controller yang akan dijalankan, biasanya dengan format `[ControllerName::class, "methodName"]`
+- `add($path, $method, $controller)`: membuat rute baru, `$path` untuk url, `$method` untuk metode request, dan $controller untuk controller yang akan dijalankan, biasanya dengan format `[ControllerName::class, "methodName"]`. Ini juga akan memberikan param bernama `$paths` yang isinya path url yang sudah dipecah dan siap digunakan untuk berbagai fungsi tambahan seperti routing internal di controller.
 - `run()`: menjalankan router, fungsi ini harus dijalanakan setalah semua rute ditambahkan

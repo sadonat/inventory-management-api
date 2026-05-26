@@ -26,10 +26,11 @@ class Router
     {
         $path = parse_url($_SERVER['REQUEST_URI'])['path'];
         $method =  $_SERVER['REQUEST_METHOD'];
+        $paths = explode("/", trim($path, "/"));
         $controller = self::$routes[$path][$method] ?? null;
         if (empty($controller)) {
             $controller = self::$default;
         }
-        call_user_func($controller);
+        call_user_func($controller, $paths);
     }
 }

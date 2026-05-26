@@ -3,8 +3,8 @@
 require_once 'helpers/Responser.php';
 class DefaultController
 {
-    public static function notFound()
+    public static function notFound($paths)
     {
-        Responser::custom(404, 'Not found', null);
+        Responser::custom(404, 'Not found', $paths);
     }
 }
