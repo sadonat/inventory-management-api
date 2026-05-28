@@ -20,7 +20,7 @@ membuat user baru
 ```json
 {
   "status": "ok",
-  "data": null
+  "data": "User successfully created"
 }
 ```
 > [!NOTE]
@@ -29,13 +29,13 @@ membuat user baru
 ### DELETE
 menghapus user
 **request:**
+path-url: `/user/[id]`
 ```json
 {
-    "id": "1"
 }
 ```
 > [!NOTE]
-> - id: id user
+> - id: id user yang ingin dihapus
 
 **response:**
 ```json

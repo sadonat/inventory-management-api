@@ -27,7 +27,7 @@ class Router
         $path = parse_url($_SERVER['REQUEST_URI'])['path'];
         $method =  $_SERVER['REQUEST_METHOD'];
         $paths = explode("/", trim($path, "/"));
-        $controller = self::$routes[$path][$method] ?? null;
+        $controller = self::$routes[$paths[0]][$method] ?? null;
         if (empty($controller)) {
             $controller = self::$default;
         }

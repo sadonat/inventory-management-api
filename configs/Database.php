@@ -1,7 +1,7 @@
 <?php
 
 // DATABASE
-$host = 'localhost';
+$host = '127.0.0.1';
 $db = 'stockdb';
 $user = 'stock_admin';
 $pass = 'admin1234';
