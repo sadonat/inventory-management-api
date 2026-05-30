@@ -21,5 +21,14 @@ class Token
     public static function update($user_id, $token)
     {
         $stmt = Databaser::runQuery('UPDATE token SET token = ?,created_at = NOW(), expired_at = DATE_ADD(NOW(), INTERVAL 7 DAY) WHERE user_id = ?', [$token, $user_id]);
+
+        return $stmt->rowCount();
+    }
+
+    public static function getByToken($token)
+    {
+        $stmt = Databaser::runQuery('SELECT * FROM token WHERE BINARY token = ?', [$token]);
+
+        return $stmt->fetch();
     }
 }

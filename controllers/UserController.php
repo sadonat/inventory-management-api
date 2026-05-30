@@ -3,6 +3,7 @@
 require_once 'helpers/Responser.php';
 require_once 'models/User.php';
 require_once 'helpers/Inputter.php';
+require_once 'controllers/AuthController.php';
 
 class UserController
 {
@@ -24,6 +25,7 @@ class UserController
 
     public static function create()
     {
+        Auth::requiredPrivilegeLevel(2);
         $name = Inputter::requiredBodyData('name');
         $password = password_hash(Inputter::requiredBodyData('password'), PASSWORD_DEFAULT);
         $role = Inputter::getBodyData('role') ?? 'staff';
