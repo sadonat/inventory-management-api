@@ -37,4 +37,11 @@ class User
 
         return $stmt->fetch();
     }
+
+    public static function getByName($name)
+    {
+        $stmt = Databaser::runQuery('SELECT * FROM user WHERE BINARY name = ?', [$name]);
+
+        return $stmt->fetch();
+    }
 }
