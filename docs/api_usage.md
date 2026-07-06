@@ -1,77 +1,103 @@
 # API USAGE
-## /user
-### PUT
-membuat user baru  
 
-**request:**
-```json
-{
-    "name": "username",
-    "password": "password123",
-    "role": "staff"
-}
-```
-> [!NOTE]
-> - name: nama user yang ingin dibuat
-> - password: password untuk user yang ingin dibuat
-> - role(opsional): dapat berisi "staff" atau "admin", staff memiliki privilege yang lebih terbatas daripada admin. secara default user yang dibuat akan menjadi staff.
+## GET /user/{id}?offset={offset}&limit={limit}
 
-**response:**
-```json
-{
-  "status": "ok",
-  "data": "User successfully created"
-}
-```
-> [!NOTE]
-> Status akan menjadi "bad request" dengan kode 400 jika user gagal dibuat
+Metode ini mengambil semua user menggunakan paging jika {id} tidak didefinisikan, kamu bisa mengisi {offset} dan {limit} untuk mensetting paging. {offset} untuk darimana memulai paging, dan {limit} untuk dimana mengakhiri {paging}. Kalau kedua parameter ini tidak diisi secara default offset = 0, dan limit = 20, ini akan mengambil 20 user pertama dari database. Kalau {id} diisi ia akan mengambil sebuah useryang memilki id tersebut.
 
-### DELETE
-menghapus user
-**request:**
-path-url: `/user/[id]`
-```json
-{
-}
-```
-> [!NOTE]
-> - id: id user yang ingin dihapus
+Response untuk url /user/{id}
 
-**response:**
-```json
-{
-  "status": "ok",
-  "data": null
-}
-```
-> [!NOTE]
-> Status akan menjadi "bad request" dengan kode 400 jika user dengan tersebut tidak ditemukan.
-
-### POST
-mengambil user berdasarkan id
-**request:**
-```json
-{
-    "id": "1"
-}
-```
-> [!NOTE]
-> - id: id user
-
-**response:**
 ```json
 {
   "status": "ok",
   "data": {
     "id": 1,
     "name": "username",
-    "password": "password123",
-    "role": "admin",
-    "created_at": "2026-03-18 07:48:29"
+    "password": "$2y$12$kPajNexWnC1NsMyQbRIWgez5ADkGyGqtuPPjg0MxsxYALJAdvDzwO",
+    "role": "staff"
   }
 }
 ```
-> [!NOTE]
-> Status akan menjadi "bad request" dengan kode 400 jika user dengan tersebut tidak ditemukan.
 
+Response untuk url /user?offset=0&limit=5
 
+```json
+{
+  "status": "ok",
+  "data": [
+    {
+      "id": 1,
+      "name": "username",
+      "password": "$2y$12$RpdRyBbmh5A88cazCYG8MutyQAzW4sSLPqJ9QaSNTQ/aSy2ASNlQK",
+      "role": "staff"
+    },
+    {dan seterusnya}
+  ]
+}
+```
+
+## POST /user
+
+Membuat akun user baru, harus terautorisasi degan level privilege 2, jadi pastikan untuk menggunakan token login.
+Request:
+
+```json
+{
+  "name": "username",
+  "password": "userpassword",
+  "role": "admin"
+}
+```
+
+- role bersifat opsional, jika tidak diisi otomatis akan terisi dengan "staff".
+
+Response:
+
+```json
+{
+  "status": "ok",
+  "data": {
+    "message": "User successfully created"
+  }
+}
+```
+
+## PUT /user/{id}
+
+Mengupdate sebuah user yang sudah ada. {id} diisi dengan id user yang ungin di update.
+
+Request:
+
+```json
+{
+  "name": "new user name",
+  "password": "new user password"
+}
+```
+
+Response:
+
+```json
+{
+  "status": "ok",
+  "data": {
+    "message": "User successfully updated"
+  }
+}
+```
+
+## DELETE /user/{id}
+
+menghapus user
+
+Request: -
+
+Response:
+
+```json
+{
+  "status": "ok",
+  "data": {
+    "message": "User successfully deleted"
+  }
+}
+```
