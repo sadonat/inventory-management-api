@@ -31,4 +31,8 @@ class Token
 
         return $stmt->fetch();
     }
+    public static function delete($token){
+        $stmt = Databaser::runQuery('DELETE FROM token WHERE BINARY token = ?', [$token]);
+        return $stmt->rowCount();
+    }
 }
