@@ -13,14 +13,14 @@ class UserController
         if (! empty($id)) {
             $result = User::getById($id);
             if (empty($result)) {
-                Responser::bad(['message' => 'User not found']);
+                Responser::bad('User not found');
             }
-            Responser::ok($result);
+            Responser::ok('successfuly find user', $result);
         }
         $limit = $_GET['limit'] ?? 20;
         $offset = $_GET['offset'] ?? 0;
         $result = User::getAll($limit, $offset);
-        Responser::ok($result);
+        Responser::ok('successfully find all users', $result);
     }
 
     public static function create()
@@ -33,42 +33,42 @@ class UserController
         $result = User::create($name, $password, $role);
 
         if ($result > 0) {
-            Responser::ok(['message' => 'User successfully created']);
+            Responser::ok('User successfully created');
         }
 
-        Responser::bad(['message' => 'Failed to create new user']);
+        Responser::bad('Failed to create new user');
     }
 
     public static function delete($paths)
     {
         $id = $paths[1] ?? null;
         if (empty($id)) {
-            Responser::bad(['message' => 'User id not specified!']);
+            Responser::bad('User id not specified!');
         }
         $result = User::delete($id);
 
         if ($result > 0) {
-            Responser::ok(['message' => 'User successfully deleted']);
+            Responser::ok('User successfully deleted');
         }
 
-        Responser::bad(['message' => 'Cannot find user with that id, failed to delete user']);
+        Responser::bad('Cannot find user with that id, failed to delete user');
     }
 
     public static function update($paths)
     {
         $id = $paths[1] ?? null;
         if (empty($id)) {
-            Responser::bad(['message' => 'User id not specified!']);
+            Responser::bad('User id not specified!');
         }
         $name = Inputter::requiredBodyData('name');
         $password = password_hash(Inputter::requiredBodyData('password'), PASSWORD_DEFAULT);
 
         $result = User::update($id, $name, $password);
         if ($result > 0) {
-            Responser::ok(['message' => 'User successfully updated']);
+            Responser::ok('User successfully updated');
         }
 
-        Responser::bad(['message' => 'Failed to update new user']);
+        Responser::bad('Failed to update new user');
 
     }
 }

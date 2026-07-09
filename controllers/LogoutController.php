@@ -7,7 +7,7 @@ class LogoutController{
     public static function logout(){
         $token = Auther::getBearerToken();
         $result = Token::delete($token);
-        if($result > 0) Responser::ok();
-        Responser::bad();
+        if($result > 0) Responser::ok('logout success');
+        Responser::bad('logout failed, this token is not valid');
     }
 }

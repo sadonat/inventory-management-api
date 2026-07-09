@@ -5,6 +5,6 @@ class DefaultController
 {
     public static function notFound($paths)
     {
-        Responser::custom(404, 'Not found', $paths);
+        Responser::custom(404, 'Not found', 'There is nothing like that!', $paths);
     }
 }

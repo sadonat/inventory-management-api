@@ -13,7 +13,7 @@ class Auth
         $existingToken = Token::getByToken($bearedToken);
 
         if (! $existingToken) {
-            Responser::bad(['message' => 'Unauthorized']);
+            Responser::bad('Unauthorized');
         }
 
         $account = User::getById($existingToken['user_id']);
@@ -29,6 +29,6 @@ class Auth
         if ($userPrivilegeLevel >= $level) {
             return true;
         }
-        Responser::bad(['message' => 'Insufficient privilege']);
+        Responser::bad('Insufficient privilege');
     }
 }

@@ -14,9 +14,9 @@ Karena aku membuat API ini tanpa framework ataupun library, aku harus membuat fu
 
 ## Responser
 
-- `ok($data)`: mengirimkan response ke client, dengan kode status 200. kamu juga bisa menyertakan data dengan memasukkannya ke `$data`
-- `bad($data)`: mengerimkan response ke client, dengan kode status 400. kamu juga bisa menyertakan data
-- `custom($code, $status, $data)`: mengirimkan response ke client yang bisa kamu tweak sendiri. `$code` untuk kode status, `$status` untuk pesan status( ok, bad, error dan lain-lain), `$data` untuk data
+- `ok($message, $data)`: mengirimkan response ke client, dengan kode status 200. kamu juga bisa menyertakan data dengan memasukkannya ke `$data`
+- `bad($message, $data)`: mengerimkan response ke client, dengan kode status 400. kamu juga bisa menyertakan data
+- `custom($code, $status, $message, $data)`: mengirimkan response ke client yang bisa kamu tweak sendiri. `$code` untuk kode status, `$status` untuk pesan status( ok, bad, error dan lain-lain), `$data` untuk data
 
 ## Inputter
 

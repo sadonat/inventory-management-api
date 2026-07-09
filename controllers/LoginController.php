@@ -16,7 +16,7 @@ class LoginController
 
         $account = User::getByName($name);
         if (empty($account)) {
-            Responser::bad(['message' => 'User not found!']);
+            Responser::bad('User not found!');
         }
 
         if (password_verify($password, $account['password'])) {
@@ -25,12 +25,12 @@ class LoginController
 
             if (empty($existing_token)) {
                 $result = Token::create($account['id'], $token);
-                Responser::ok(['message' => 'Token successfully created', 'token' => $token]);
+                Responser::ok('Token successfully created', ['token' => $token]);
             }
             $result = Token::update($account['id'], $token);
-            Responser::ok(['message' => 'Token successfully updated', 'token' => $token]);
+            Responser::ok('Token successfully updated', ['token' => $token]);
         }
 
-        Responser::bad(['message' => 'Wrong password']);
+        Responser::bad('Wrong password');
     }
 }
