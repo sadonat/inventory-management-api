@@ -1,5 +1,4 @@
-# API USAGE
-
+# user
 ## GET /user/{id}?offset={offset}&limit={limit}
 
 Metode ini mengambil semua user menggunakan paging jika {id} tidak didefinisikan, kamu bisa mengisi {offset} dan {limit} untuk mensetting paging. {offset} untuk darimana memulai paging, dan {limit} untuk dimana mengakhiri {paging}. Kalau kedua parameter ini tidak diisi secara default offset = 0, dan limit = 20, ini akan mengambil 20 user pertama dari database. Kalau {id} diisi ia akan mengambil sebuah useryang memilki id tersebut.
@@ -100,35 +99,4 @@ Response:
     "message": "User successfully deleted"
   }
 }
-```
-
-## POST /login
-Dengan ini kamu akan mendapatkan token autorisasi.
-
-Request:
-```json
-{
-  "name": "Admin",
-  "password": "admin12345"
-}
-```
-
-Response:
-```json
-{
-  "status": "ok",
-  "data": {
-    "message": "Token successfully created",
-    "token": "tokenexampleonlyexample"
-  }
-}
-```
-
-## GET /logout
-kalau kamu telah login dan menggunakan token tersebut di autorisasi, setelah melakukan request ini token tersbut tidak lagi valid dan kamu harus login ulang.
-
-Request: -
-
-Response:
-```json
 ```
