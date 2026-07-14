@@ -14,6 +14,7 @@ Router::add('user', 'PUT', [UserController::class, 'update']);
 Router::add('user', 'GET', [UserController::class, 'get']);
 
 Router::add('category', 'POST', [CategoryController::class, 'create']);
+Router::add('category', 'GET', [CategoryController::class, 'get']);
 
 Router::add('login', 'POST', [LoginController::class, 'login']);
 Router::add('logout', 'GET', [LogoutController::class, 'logout']);

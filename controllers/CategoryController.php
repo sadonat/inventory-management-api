@@ -12,4 +12,21 @@ class CategoryController{
         if($result > 0) Responser::ok('Category successfully created!');
         Responser::bad('Failed to create new category');
     }
+
+public static function get($paths)
+    {
+        $id = $paths[1] ?? null;
+        if (! empty($id)) {
+            $result = Category::getById($id);
+            if (empty($result)) {
+                Responser::bad('Category not found');
+            }
+            Responser::ok('Successfuly find category', $result);
+        }
+        $limit = $_GET['limit'] ?? 20;
+        $offset = $_GET['offset'] ?? 0;
+        $result = Category::getAll($limit, $offset);
+        Responser::ok('Successfully find all categories', $result);
+    }
+
 }

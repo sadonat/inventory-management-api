@@ -18,3 +18,37 @@ Response:
   "data": null
 }
 ```
+
+## GET /category/{id}?offset={offset}&limit={limit}
+
+Metode ini mengambil semua user menggunakan paging jika {id} tidak didefinisikan, kamu bisa mengisi {offset} dan {limit} untuk mensetting paging. {offset} untuk darimana memulai paging, dan {limit} untuk dimana mengakhiri {paging}. Kalau kedua parameter ini tidak diisi secara default offset = 0, dan limit = 20, ini akan mengambil 20 kategori pertama dari database. Kalau {id} diisi ia akan mengambil sebuah kategori yang memilki id tersebut.
+
+Response untuk url /category/{id}
+
+```json
+{
+  "status": "ok",
+  "message": "Successfuly find category",
+  "data": {
+    "id": 1,
+    "name": "Category Name"
+  }
+}
+```
+
+Response untuk url /category?offset=0&limit=5
+
+```json
+{
+  "status": "ok",
+  "message": "Successfully find all categories",
+  "data": [
+    {
+      "id": 3,
+      "name": "Category Name"
+    },
+    {...},
+    ...
+  ]
+}
+```
