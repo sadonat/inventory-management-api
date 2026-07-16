@@ -28,5 +28,14 @@ public static function get($paths)
         $result = Category::getAll($limit, $offset);
         Responser::ok('Successfully find all categories', $result);
     }
+    public static function delete($paths)
+    {
+        $id = $paths[1] ?? null;
+        if(empty($id))Responser::bad('Category id not specified');
 
+        $result = Category::delete($id);
+        if($result > 0)Responser::ok('Category with id '.$id.' is succesfully deleted');
+
+        Responser::bad('Failed to delete category with id: '.$id.', its not exist');
+    }
 }

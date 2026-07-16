@@ -19,4 +19,9 @@ public static function getAll($limit, $offset)
 
         return $stmt->fetch();
     }
+
+    public static function delete($id){
+        $stmt = Databaser::runQuery('DELETE FROM category WHERE id = ?', [$id]);
+        return $stmt->rowCount();
+    }
 }
