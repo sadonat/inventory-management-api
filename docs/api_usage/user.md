@@ -1,4 +1,5 @@
 # user
+
 ## GET /user/{id}?offset={offset}&limit={limit}
 
 Metode ini mengambil semua user menggunakan paging jika {id} tidak didefinisikan, kamu bisa mengisi {offset} dan {limit} untuk mensetting paging. {offset} untuk darimana memulai paging, dan {limit} untuk dimana mengakhiri {paging}. Kalau kedua parameter ini tidak diisi secara default offset = 0, dan limit = 20, ini akan mengambil 20 user pertama dari database. Kalau {id} diisi ia akan mengambil sebuah useryang memilki id tersebut.

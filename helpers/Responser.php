@@ -15,7 +15,7 @@ class Responser
 
     public static function ok($message, $data = null)
     {
-        self::return_response(200, 'ok',$message, $data);
+        self::return_response(200, 'ok', $message, $data);
     }
 
     public static function bad($message, $data = null)

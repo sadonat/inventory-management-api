@@ -1,8 +1,11 @@
 # /login
+
 ## POST
+
 Dengan ini kamu akan mendapatkan token autorisasi.
 
 Request:
+
 ```json
 {
   "name": "Admin",
@@ -11,6 +14,7 @@ Request:
 ```
 
 Response:
+
 ```json
 {
   "status": "ok",
@@ -20,4 +24,3 @@ Response:
   }
 }
 ```
-
