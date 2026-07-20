@@ -11,6 +11,7 @@ ini adalah dokumentasi umum, untuk dokumentasi teknis silahkan lihat [docs](docs
 - Token Authorization (Database Based)
 - Users CRUD
 - Tokens CRUD
+- Category CRUD
 
 ## Techstack
 
