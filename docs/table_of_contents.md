@@ -1,6 +1,6 @@
 # TECHNICAL DOCUMENTATION
 
-folder ini(docs/) berisi dekomentasi teknis yang bisa digunakan untuk membantu memahami kode.
+folder ini (docs/) berisi dekomentasi teknis yang bisa digunakan untuk membantu memahami kode.
 
 ## Daftar Isi
 
