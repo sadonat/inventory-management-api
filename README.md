@@ -2,8 +2,8 @@
 
 ## Overview
 
-API simpel yang dibuat dengan penuh cinta oleh [sadonat](https://github.com/sadonatt)
-ini adalah dokumentasi umum, untuk dokumentasi teknis silahkan lihat [docs](docs/main.md).
+API simpel yang dibuat dengan penuh cinta oleh [sadonat](https://github.com/sadonat)
+ini adalah dokumentasi umum, untuk dokumentasi teknis silahkan lihat [docs](docs/table_of_contents.md).
 
 ## Features
 
@@ -27,7 +27,7 @@ ini adalah dokumentasi umum, untuk dokumentasi teknis silahkan lihat [docs](docs
 ## Usage
 
 Kamu bisa menggunakan program ini setelah menjalankannya.Karena program ini hanyalah API, kamu perlu membuat interface sendiri / menggunakan API tester seperti Postman dan Hopscotch.
-see [docs/api-usage.php](docs/api-usage.php)
+see [docs/api-usage](docs/api-usage/table_of_contents.md)
 
 ## Folder Structure
 
