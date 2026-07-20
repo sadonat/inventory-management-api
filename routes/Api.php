@@ -5,6 +5,7 @@ require_once 'controllers/UserController.php';
 require_once 'controllers/LoginController.php';
 require_once 'controllers/LogoutController.php';
 require_once 'controllers/CategoryController.php';
+require_once 'controllers/ItemController.php';
 
 // ROUTING
 Router::addDefault();
@@ -17,6 +18,8 @@ Router::add('category', 'POST', [CategoryController::class, 'create']);
 Router::add('category', 'GET', [CategoryController::class, 'get']);
 Router::add('category', 'DELETE', [CategoryController::class, 'delete']);
 Router::add('category', 'PUT', [CategoryController::class, 'update']);
+
+Router::add('item', 'POST', [ItemController::class, 'create']);
 
 Router::add('login', 'POST', [LoginController::class, 'login']);
 Router::add('logout', 'GET', [LogoutController::class, 'logout']);
