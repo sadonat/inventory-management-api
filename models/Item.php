@@ -2,27 +2,33 @@
 
 require_once 'helpers/Databaser.php';
 
-class Item{
-    public static function create($sku, $name, $category_id, $description){
+class Item
+{
+    public static function create($sku, $name, $category_id, $description)
+    {
         $stmt = Databaser::runQuery('INSERT INTO item(sku, name, category_id, description, quantity) VALUES(?, ?, ?, ?, 0)', [$sku, $name, $category_id, $description]);
+
         return $stmt->rowCount();
     }
 
     public static function getBySKU($sku)
     {
         $stmt = Databaser::runQuery('SELECT * FROM item WHERE sku = ?', [$sku]);
+
         return $stmt->fetch();
     }
 
     public static function getAll($limit, $offset)
     {
         $stmt = Databaser::runQuery('SELECT * FROM item LIMIT ? OFFSET ?', [$limit, $offset]);
+
         return $stmt->fetchAll();
-    } 
+    }
 
     public static function getById($id)
     {
         $stmt = Databaser::runQuery('SELECT * FROM item WHERE id = ?', [$id]);
+
         return $stmt->fetch();
     }
 }

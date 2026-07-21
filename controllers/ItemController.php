@@ -1,25 +1,28 @@
 <?php
+
 require_once 'helpers/Inputter.php';
 require_once 'models/Item.php';
 require_once 'helpers/Responser.php';
 
-
-class ItemController{
-    public static function create(){
+class ItemController
+{
+    public static function create()
+    {
         $sku = strtoupper(Inputter::requiredBodyData('sku'));
         $name = ucwords(strtolower(Inputter::requiredBodyData('name')));
         $category_id = Inputter::getBodyData('category_id') ?? null;
         $description = Inputter::getBodyData('description') ?? null;
 
         $result = Item::create($sku, $name, $category_id, $description);
-        if($result > 0) Responser::ok('Successfully created new item');
+        if ($result > 0) {
+            Responser::ok('Successfully created new item');
+        }
         Responser::bad('Failed to create new item');
     }
 
-
     public static function get($paths)
     {
-        if (! empty($paths[1])){
+        if (! empty($paths[1])) {
             $id = ctype_digit($paths[1]) ? $paths[1] : null;
             $sku = empty($id) ? $paths[1] : null;
             $result = empty($id) ? Item::getBySKU($sku) : Item::getById($id);
@@ -29,7 +32,7 @@ class ItemController{
             }
             Responser::ok('successfuly find item', $result);
         }
-            
+
         $limit = $_GET['limit'] ?? 20;
         $offset = $_GET['offset'] ?? 0;
         $result = Item::getAll($limit, $offset);
