@@ -15,4 +15,24 @@ class ItemController{
         if($result > 0) Responser::ok('Successfully created new item');
         Responser::bad('Failed to create new item');
     }
+
+
+    public static function get($paths)
+    {
+        if (! empty($paths[1])){
+            $id = ctype_digit($paths[1]) ? $paths[1] : null;
+            $sku = empty($id) ? $paths[1] : null;
+            $result = empty($id) ? Item::getBySKU($sku) : Item::getById($id);
+
+            if (empty($result)) {
+                Responser::bad('Item not found');
+            }
+            Responser::ok('successfuly find item', $result);
+        }
+            
+        $limit = $_GET['limit'] ?? 20;
+        $offset = $_GET['offset'] ?? 0;
+        $result = Item::getAll($limit, $offset);
+        Responser::ok('successfully find all item', $result);
+    }
 }

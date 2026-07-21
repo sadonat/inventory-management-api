@@ -24,3 +24,16 @@ Response:
   "data": null
 }
 ```
+
+## GET
+untuk mengambil data yang ada di tabel item. ada beberapa cara yang bisa kamu lakukan
+
+### Paging
+kamu menentukan offset dan limit untuk data yang kamu ambil jadi kamu bisa memilih darimana dan seberapa banyak data yang ingin kamu ambil. contohnya URL **/item?limit=30&offset=10** akan mengambil data dari baris ke 11 sampai ke 30.
+
+### Path Parameter
+kamu bisa menggunakan id atau sku item untuk melihat informasi tentang item tersebut. contohnya: **/item/5** (mengambil data item dengan id 5) dan **/item/ti-12** (mengambil item dengan sku TI-12). yang membedakan id dengan SKU adalah keberadaan huruf. untuk menggunakan SKU kamu tidak perlu khawatir tentang kapitalisasi karakter, soalnya sku bersifat case insensitive
+
+### All
+untuk mengambil swmua data item (sangat tidak disaranakan karena dapat menyebabkan overload sistem), kamu cukup menggunakan route **/item**
+
