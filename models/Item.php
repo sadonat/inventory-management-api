@@ -31,4 +31,11 @@ class Item
 
         return $stmt->fetch();
     }
+
+    public static function delete($id)
+    {
+        $stmt = Databaser::runQuery('DELETE FROM item WHERE id = ?', [$id]);
+
+        return $stmt->rowCount();
+    }
 }

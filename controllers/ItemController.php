@@ -38,4 +38,19 @@ class ItemController
         $result = Item::getAll($limit, $offset);
         Responser::ok('successfully find all item', $result);
     }
+
+    public static function delete($paths)
+    {
+        $id = $paths[1] ?? null;
+        if (empty($id)) {
+            Responser::bad('Item id not specified!');
+        }
+        $result = Item::delete($id);
+
+        if ($result > 0) {
+            Responser::ok('Item successfully deleted');
+        }
+
+        Responser::bad('Cannot find item with that id, failed to delete user');
+    }
 }

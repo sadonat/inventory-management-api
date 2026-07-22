@@ -21,6 +21,7 @@ Router::add('category', 'PUT', [CategoryController::class, 'update']);
 
 Router::add('item', 'POST', [ItemController::class, 'create']);
 Router::add('item', 'GET', [ItemController::class, 'get']);
+Router::add('item', 'DELETE', [ItemController::class, 'delete']);
 
 Router::add('login', 'POST', [LoginController::class, 'login']);
 Router::add('logout', 'GET', [LogoutController::class, 'logout']);

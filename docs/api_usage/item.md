@@ -44,3 +44,7 @@ kamu bisa menggunakan id atau sku item untuk melihat informasi tentang item ters
 ### All
 
 untuk mengambil swmua data item (sangat tidak disaranakan karena dapat menyebabkan overload sistem), kamu cukup menggunakan route **/item**
+
+## DELETE
+
+Untuk menghapus data sebuah item. Gunakan `/item/{id}` untuk menghapus itek dengan id {id}.
