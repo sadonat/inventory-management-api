@@ -38,4 +38,16 @@ class Item
 
         return $stmt->rowCount();
     }
+
+    public static function patch($id, $name, $value)
+    {
+        $stmt = Databaser::runQuery('UPDATE item SET '.$name.' = ? WHERE id = ?', [$value, $id]);
+        return $stmt->rowCount();
+    }
+
+    public static function isColumnExist($col)
+    {
+        $stmt = Databaser::runQuery('SHOW COLUMNS FROM item WHERE Field = ?', [$col]);
+        return !empty($stmt->fetch());
+    }
 }

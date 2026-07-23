@@ -3,10 +3,14 @@
 require_once 'helpers/Responser.php';
 class Inputter
 {
+    public static function getAllBody()
+    {
+        return json_decode(file_get_contents('php://input'), true);
+    }
+
     public static function getBodyData($itemName)
     {
-        $data = json_decode(file_get_contents('php://input'), true);
-        $data = $data[$itemName] ?? null;
+        $data = self::getAllBody()[$itemName] ?? null;
 
         return $data;
     }

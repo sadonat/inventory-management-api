@@ -53,4 +53,34 @@ class ItemController
 
         Responser::bad('Cannot find item with that id, failed to delete user');
     }
+
+    public static function patch($paths)
+    {
+        $id = $paths[1] ?? null;
+        if (empty($id)) {
+            Responser::bad('Item id not specified!');
+        }
+
+        if (empty(Item::getById($id))) Responser::bad('Theres no item with that id');
+
+        $data = Inputter::getAllBody();
+        if(empty($data))Responser::bad('You wasting my time');
+        $message = '';
+        foreach($data as $key => $value){
+            if(!is_string($key) && !is_string($value)){
+                $message = $message.'\nError: key and value must be the string type';
+                continue;
+            }
+            if(!Item::isColumnExist($key)){
+                $message = $message.'\nError: Theres no column named "'.$key.'"';
+                continue;
+            }
+            $result = Item::patch($id, $key, $value);
+            if($result > 0)
+            {
+                $message = $message.'\nSuccess: changed '.$key.' to '.$value;
+            }
+        }
+        Responser::ok($message);
+    }
 }
